@@ -1,0 +1,12 @@
+<div class="d-md-flex" *ngIf="!showSnippet">
+    <div class="" id="inputs">
+        <div ace-editor [theme]="'monokai'" [mode]="'html'" [(text)]="textHTML" [durationBeforeCallback]="500" (textChanged)="codeHTML()" class="tAreas"></div>
+        <div ace-editor [theme]="'monokai'" [mode]="'css'" [(text)]="textCSS" [durationBeforeCallback]="500" (textChanged)="codeHTML()" class="tAreas"></div>
+        <div ace-editor [theme]="'monokai'" [mode]="'javascript'" [(text)]="textJS" class="tAreas"></div>
+    </div>
+        <iframe [attr.srcDoc]="paginahtml" id="view" frameborder="1"></iframe>
+</div>
+
+<div class="divSnippet" *ngIf="showSnippet">
+    <div ace-editor [theme]="'monokai'" [mode]="mode" [(text)]="textSnippet" class="tAreaSnippet"></div>  
+</div>

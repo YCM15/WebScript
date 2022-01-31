@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/colors.scss";
+.gradient{
+    background: rgb(5,68,94);
+    background: -moz-linear-gradient(90deg, rgba(5,68,94,1) 0%, rgba(142,61,235,1) 51%, rgba(175,12,208,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(5,68,94,1) 0%, rgba(142,61,235,1) 51%, rgba(175,12,208,1) 100%);
+    background: linear-gradient(90deg, rgba(5,68,94,1) 0%, rgba(142,61,235,1) 51%, rgba(175,12,208,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#05445e",endColorstr="#af0cd0",GradientType=1);
+    color: $color-dark;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

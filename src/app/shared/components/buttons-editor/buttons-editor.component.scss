@@ -1,0 +1,21 @@
+
+.nav-link{
+    color:white !important;
+}
+
+.dropdown-item, .nav-link{
+    cursor: pointer;
+}
+
+.icon{
+    display: none;
+}
+ @media (max-width:700px) {
+    .icon{
+        display: block;
+    }
+    .text {
+        display: none;
+    }
+ }
+

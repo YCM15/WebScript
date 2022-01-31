@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light gradient">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="''">
+        <img src="../../../../assets/0a5dedab-8987-4bce-874d-1c7a97379ceb_200x200.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        <span> WebScript </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarOptions" aria-controls="navbarOptions" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarOptions">
+          <app-buttons-editor *ngIf="editor"></app-buttons-editor>
+        <div class="ms-auto">
+          <app-buttons-logged *ngIf="logged"></app-buttons-logged>
+          <app-buttons-unloged *ngIf="!logged"></app-buttons-unloged>
+        </div>
+      </div>
+    </div>
+</nav>

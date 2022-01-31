@@ -1,0 +1,46 @@
+<nav class="m-3">
+    <a class="btn mx-2 link" routerLink="/workSpace/snippets"><mat-icon class="iconOptions my-auto me-1">code</mat-icon>snippets</a>
+    <a class="btn mx-2 link" routerLink="/workSpace/editor"><mat-icon class="iconOptions my-auto me-1">draw</mat-icon>editor</a>
+</nav>
+<div class="d-flex text-center mx-auto card-profile shadow">
+    <div class="card info-profile mx-auto">
+        <div class="card-body">
+            <img src="../../assets/avatar.png" alt="" class="image-top shadow">
+            <form class="row" id="form" [formGroup]="formProfile">
+                <div class="d-sm-flex justify-content-center mb-3" *ngIf="!edit">
+                    <button mat-raised-button color="warn" class="mx-5 btnEdit" (click)="editProfile()">Edit Profile</button>
+                    <button mat-raised-button color="primary" class="mx-5" (click)="changePass()">Password</button>
+                </div>                
+                <div class="form-group col-lg-6 col-md-6">
+                    <label>Nombre</label>
+                    <input id="nombre" class="form-control input" formControlName="nombre" required>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6">
+                    <label>Apellido</label>
+                    <input id="apellido" class="form-control input" formControlName="apellido" required>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6">
+                    <label>Usuario</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input" id="inputGroupPrepend">
+                                <mat-icon>alternate_email</mat-icon>
+                            </span>
+                        </div>
+                        <input class="form-control input " readonly id="usuario" formControlName="nickname" placeholder="" required>
+                    </div>
+                </div>
+                <div class="form-group col-lg-6 col-md-6">
+                    <label>Correo</label>
+                    <input class="form-control input" type="email" formControlName="mail" placeholder="email@example.com" required>
+                </div>
+            </form>
+            <div class="d-flex justify-content-center mb-3" *ngIf="edit">
+                <button mat-raised-button color="warn" class="mx-5" (click)="edit = false">Cancelar</button>
+                <button mat-raised-button color="primary" class="mx-5" (click)="saveChange()">Guardar</button>
+            </div>    
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<nav class="m-3">
+  
+  <a mat-raised-button class="otherBtn" *ngIf="!idUrlExist; else folder;" color="warn" routerLink="/workSpace/profile"> <mat-icon>arrow_back</mat-icon>Profile</a>
+  <ng-template #folder>
+    <a mat-raised-button class="otherBtn" color="warn" (click)="goBack()"> <mat-icon>arrow_back</mat-icon>Previus Folder</a>
+  </ng-template>
+  <button class="btn ms-2 otherBtn btnNewFolder" (click)="newFOlder()">New Folder</button>
+  <button class="btn ms-2 otherBtn btnNewFolder" (click)="newFOlder()">New Proeyct</button>
+</nav>
+<div class="container tex-center">
+  <h1 class="shadow p-3">Files : <b>{{nameFolder}}</b></h1>
+</div>
+
+<div class="container mt-5">
+  <div class="d-sm-flex justify-content-evenly">
+    <div class="card shadow cardFolder" *ngFor="let folder of folders">
+      <h1 class="card-title link" (click)="openFolder(folder._id)"> <mat-icon>source</mat-icon> <b> {{folder.nombre}} </b></h1>
+      <p class="card-text link" (click)="openFolder(folder._id)"> 
+        <b> createdAt</b>: {{folder.createdAt | date : 'mediumDate'}} <br/>
+        <b> updatedAt</b>: {{folder.updatedAt | date : 'mediumDate'}}
+     </p>
+      <div class="d-flex justify-content-evenly" *ngIf="!colaborador">
+        <button mat-icon-button matTooltip="Share" class="btnOptions" color="primary">
+          <mat-icon class="iconOptions">share</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn">
+          <mat-icon class="iconOptions">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <!-- folders -->
+    <div class="card shadow cardProyect" *ngFor="let proyect of proyects">
+      <h1 class="card-title"> <mat-icon>subtitles</mat-icon> <b> {{proyect.nombre}} </b></h1>
+      <p class="card-text"> 
+        <b> createdAt</b>: {{proyect.createdAt | date : 'mediumDate'}} <br/>
+        <b> updatedAt</b>: {{proyect.updatedAt | date : 'mediumDate'}}
+     </p>
+      <div class="d-flex justify-content-evenly" *ngIf="!colaborador">
+        <button mat-icon-button matTooltip="Edit" class="btnOptions" routerLink="/workSpace/editor/{{proyect._id}}">
+          <mat-icon class="iconOptions">draw</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Share" class="btnOptions" color="primary">
+          <mat-icon class="iconOptions">share</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn">
+          <mat-icon class="iconOptions">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <!-- proyects -->
+    <ng-template  *ngIf="!colaborador">
+      <div class="card shadow cardSnippet" *ngFor="let snippet of snippets">
+        <h1 class="card-title"> <mat-icon>integration_instructions</mat-icon> <b> {{snippet.nombre}} </b></h1>
+        <p class="card-text"> 
+          <b> createdAt</b>: {{snippet.createdAt | date : 'mediumDate'}} <br/>
+          <b> updatedAt</b>: {{snippet.updatedAt | date : 'mediumDate'}}
+      </p>
+      <div class="d-flex justify-content-evenly">
+        <button mat-icon-button matTooltip="Edit" class="btnOptions" routerLink="/workSpace/snippets/{{snippet._id}}">
+          <mat-icon class="iconOptions">draw</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn">
+            <mat-icon class="iconOptions">delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <!-- snippets -->
+    </ng-template>
+  </div>
+</div>
+
+<!-- colarations -->
+
+<div class="container tex-center" *ngIf="!colaborador">
+  <h1 class="shadow p-2">On Colaboration</h1>
+</div>
+
+<div class="container mt-5">
+  <div class="d-sm-flex justify-content-evenly">
+    <div class="card shadow cardFolder" *ngFor="let folder of foldersCo">
+      <h1 class="card-title link" (click)="openFolder(folder._id)"> <mat-icon>source</mat-icon> <b> {{folder.nombre}} </b></h1>
+      <p class="card-text link" (click)="openFolder(folder._id)"> 
+        <b> createdBy</b>: {{folder.creador.nickname}} <br/>
+        <b> createdAt</b>: {{folder.createdAt | date : 'mediumDate'}} <br/>
+        <b> updatedAt</b>: {{folder.updatedAt | date : 'mediumDate'}}
+     </p>
+    </div>
+    <!-- folders -->
+
+    <div class="card shadow cardProyect" *ngFor="let proyect of proyectsCo">
+      <h1 class="card-title"> <mat-icon>subtitles</mat-icon> <b> {{proyect.nombre}} </b></h1>
+      <p class="card-text"> 
+        <b> createdBy</b>: {{proyect.creador.nickname}} <br/>
+        <b> createdAt</b>: {{proyect.createdAt | date : 'mediumDate'}} <br/>
+        <b> updatedAt</b>: {{proyect.updatedAt | date : 'mediumDate'}}
+     </p>
+      <div class="d-flex justify-content-evenly">
+        <button mat-icon-button matTooltip="Edit" class="btnOptions" routerLink="/workSpace/editor/{{proyect._id}}">
+          <mat-icon class="iconOptions">draw</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
