@@ -51,4 +51,30 @@ export class WorkSpaceService {
     const url = `${this.baseUrl}/carpetas/colaborador`;
     return this.http.get(url)
   }
+
+  saveProyect(body:any){
+      const url = `${this.baseUrl}/proyectos/guardar`;
+      return this.http.post(url, body);
+  }
+
+  updateProyect(body:any){
+      const url = `${this.baseUrl}/proyectos/actualizar`;
+      return this.http.post(url, body);
+  }
+
+  saveSnippet(body:any){
+      const url = `${this.baseUrl}/snippets/guardar`;
+      return this.http.post(url, body);
+  }
+
+  updateSnippet(body:any){
+      const url = `${this.baseUrl}/snippets/actualizar`;
+      return this.http.post(url, body);
+  }
+
+  deleteItem(body:any, option:string){
+    const url = `${this.baseUrl}/${option}/borrar`;
+    return this.http.post(url, body);
+  }
+
 }

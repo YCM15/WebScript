@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {SnippetGuard} from '../auth/guards/snippet.guard';
 import { FilesComponent } from './pages/files/files.component';
 import { MainComponent } from './pages/main/main.component';
 import { NewProyectComponent } from './pages/new-proyect/new-proyect.component';
@@ -16,8 +17,8 @@ const routes: Routes = [
       { path:'editor/:id', component: NewProyectComponent },
       { path:'files', component: FilesComponent },
       { path:'files/:id', component: FilesComponent },
-      { path:'snippets', component:SnippetsComponent },
-      { path:'snippets/:id', component:SnippetsComponent },
+      { path:'snippets', component:SnippetsComponent, canActivate:[SnippetGuard] },
+      { path:'snippets/:id', component:SnippetsComponent, canActivate:[SnippetGuard] },
       { path:'**', redirectTo: 'profile'}
     ]
   }

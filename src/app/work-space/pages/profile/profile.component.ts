@@ -12,7 +12,7 @@ import { ChangePasswordComponent } from '../../components/change-password/change
 export class ProfileComponent implements OnInit {
 
   edit:boolean = false;
-
+    plan:any='';
   public formProfile : FormGroup = this.fb.group({
     nombre: ['Yunior'],
     apellido: ['Cerrato'],
@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   }
 
   setUserInfo(){
+      this.plan = this.auth.user.plan;
     this.formProfile.setValue({
       nombre: this.auth.user.nombre,
       apellido: this.auth.user.apellido,

@@ -1,23 +1,20 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<h2 mat-dialog-title>Save {{(data.option==1)?'Proyect':'Snippet'}}</h2>
 <mat-dialog-content class="mat-typography">
-    <form>
-        <div class="mb-3">
-          <label for="InputPass" class="form-label">Name Proyect</label>
-          <input type="email" class="form-control" id="InputPass" aria-describedby="emailHelp">
+    <div *ngIf="data.id==null">
+        <div class="mb-3" >
+            <label for="InputPass" class="form-label">Name Proyect</label>
+          <input type="text" [(ngModel)]="nombre" class="form-control" id="InputPass" aria-describedby="emailHelp">
         </div>
         
         <div class="mb-3">
           <label for="folderSelect" class="form-label">Folder</label>
-          <select class="form-select" aria-label="Default select example" id="folderSelect">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select class="form-select" [(ngModel)]="idCarpeta" aria-label="Default select example" id="folderSelect">
+              <option *ngFor="let folder of folders" value="{{folder._id}}">{{folder.nombre}}</option>
           </select>
         </div>
-      </form>
+    </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
-  <button mat-raised-button cdkFocusInitial color="primary">Save</button>
+  <button mat-raised-button (click)="close()" color="warn">Cancel</button>
+  <button mat-raised-button cdkFocusInitial (click)="save()" color="primary">Save</button>
 </mat-dialog-actions>

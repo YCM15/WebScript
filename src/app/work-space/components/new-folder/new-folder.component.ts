@@ -35,9 +35,13 @@ export class NewFolderComponent implements OnInit {
       if(res.status){
         this.dialogRef.close({status:true, folder:res.folder});
       }else{
-        this.dialogRef.close({status:false});
+        this.close();
       }
-    }, err => { this.dialogRef.close({status:false});})
+    }, err => { this.close();})
+  }
+
+  close(){
+    this.dialogRef.close({status:false})
   }
 
 }

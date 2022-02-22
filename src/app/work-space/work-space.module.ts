@@ -24,6 +24,7 @@ import 'brace/mode/javascript';
 import 'brace/mode/css';
 import 'brace/theme/github';
 import { NewFolderComponent } from './components/new-folder/new-folder.component';
+import { ModalNewProyectComponent } from './components/modal-new-proyect/modal-new-proyect.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewFolderComponent } from './components/new-folder/new-folder.component
     MainComponent,
     ChangePasswordComponent,
     NewProyectComponent,
-    NewFolderComponent
+    NewFolderComponent,
+    ModalNewProyectComponent
   ],
   imports: [
     CommonModule,

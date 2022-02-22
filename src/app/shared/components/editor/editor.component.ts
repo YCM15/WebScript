@@ -35,8 +35,8 @@ export class EditorComponent implements OnInit {
           this.codeHTML();
           break;
         case 'save':
-          if(this.showSnippet){
-            this.save.emit(this.textSnippet);
+            if(this.showSnippet){
+            this.save.emit({codigo:this.textSnippet});
           }else{
             this.save.emit({
               html:this.textHTML,

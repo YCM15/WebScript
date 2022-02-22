@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewFolderComponent } from '../../components/new-folder/new-folder.component';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import Swal from 'sweetalert2'
+import { ModalNewProyectComponent } from '../../components/modal-new-proyect/modal-new-proyect.component';
 
 @Component({
   selector: 'app-files',
@@ -91,7 +92,7 @@ export class FilesComponent implements OnInit {
     })
   }
 
-  newFOlder(){
+  newFolder(){
     if(this.colaborador){
       Swal.fire({
         icon: 'info',
@@ -104,6 +105,9 @@ export class FilesComponent implements OnInit {
       data:this.idUrl
     });
     dialogRef.afterClosed().subscribe((res:any) => {
+      if(res==undefined){
+        return;
+      }
       if(res.status){          
           this.auth.alert('success',`Folder ${res.folder.nombre} created`, 1500);
           this.getFiles();
@@ -131,6 +135,65 @@ export class FilesComponent implements OnInit {
 
   goBack(){
     history.back();
+  }
+
+  deleteItem(id:any, option:number){
+    
+    Swal.fire({
+      title: 'Do you want delete this item?',
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let route:string = '';
+        let body:any;
+        switch (option) {
+          case 1:
+            route = 'carpetas';
+            body = {idCarpeta:id}
+            break;
+
+          case 2:
+              route = 'proyectos';
+              body = {idProyecto:id}
+              break;
+
+          case 3:
+            route = 'snippets';
+            body = {idSnippet:id}
+            break;
+          default:
+            break;
+        }
+        
+        this.wService.deleteItem(body, route).subscribe( (res:any) =>{
+          if(res.status){
+            this.getFiles();
+            Swal.fire('Success', 'Item deleted', 'success')
+          }
+          
+        } )
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+  }
+
+  newProyect(){
+    const dialogRef = this.dialog.open(ModalNewProyectComponent,{
+      data:this.idUrl
+    });
+    dialogRef.afterClosed().subscribe((res:any) => {
+      if(res==undefined){
+        return;
+      }
+      if(res){          
+          this.auth.alert('success',`Proyect created`, 1500);
+          this.getFiles();
+      }else{
+        this.auth.alert('error', 'Error on create folder', 1500);
+      }
+    })
   }
 
 }

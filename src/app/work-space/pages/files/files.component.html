@@ -4,8 +4,8 @@
   <ng-template #folder>
     <a mat-raised-button class="otherBtn" color="warn" (click)="goBack()"> <mat-icon>arrow_back</mat-icon>Previus Folder</a>
   </ng-template>
-  <button class="btn ms-2 otherBtn btnNewFolder" (click)="newFOlder()">New Folder</button>
-  <button class="btn ms-2 otherBtn btnNewFolder" (click)="newFOlder()">New Proeyct</button>
+  <button class="btn ms-2 otherBtn btnNewFolder" (click)="newFolder()">New Folder</button>
+  <button class="btn ms-2 otherBtn btnNewFolder" (click)="newProyect()">New Proyect</button>
 </nav>
 <div class="container tex-center">
   <h1 class="shadow p-3">Files : <b>{{nameFolder}}</b></h1>
@@ -20,10 +20,10 @@
         <b> updatedAt</b>: {{folder.updatedAt | date : 'mediumDate'}}
      </p>
       <div class="d-flex justify-content-evenly" *ngIf="!colaborador">
-        <button mat-icon-button matTooltip="Share" class="btnOptions" color="primary">
+        <button mat-icon-button matTooltip="Share" class="btnOptions" color="primary" >
           <mat-icon class="iconOptions">share</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn">
+        <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn" (click)="deleteItem(folder._id, 1)">
           <mat-icon class="iconOptions">delete</mat-icon>
         </button>
       </div>
@@ -42,7 +42,7 @@
         <button mat-icon-button matTooltip="Share" class="btnOptions" color="primary">
           <mat-icon class="iconOptions">share</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn">
+        <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn" (click)="deleteItem(proyect._id, 2)">
           <mat-icon class="iconOptions">delete</mat-icon>
         </button>
       </div>
@@ -59,7 +59,7 @@
         <button mat-icon-button matTooltip="Edit" class="btnOptions" routerLink="/workSpace/snippets/{{snippet._id}}">
           <mat-icon class="iconOptions">draw</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn">
+          <button mat-icon-button matTooltip="Delete" class="btnOptions" color="warn" (click)="deleteItem(snippet._id, 3)">
             <mat-icon class="iconOptions">delete</mat-icon>
           </button>
         </div>
