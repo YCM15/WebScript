@@ -48,7 +48,7 @@
       </div>
     </div>
     <!-- proyects -->
-    <ng-template  *ngIf="!colaborador">
+    <!-- <ng-template  *ngIf="!colaborador"> -->
       <div class="card shadow cardSnippet" *ngFor="let snippet of snippets">
         <h1 class="card-title"> <mat-icon>integration_instructions</mat-icon> <b> {{snippet.nombre}} </b></h1>
         <p class="card-text"> 
@@ -65,13 +65,13 @@
         </div>
       </div>
       <!-- snippets -->
-    </ng-template>
+    <!-- </ng-template> -->
   </div>
 </div>
 
 <!-- colarations -->
 
-<div class="container tex-center" *ngIf="!colaborador">
+<div class="container tex-center" *ngIf="foldersCo.length>0 || proyectsCo.length>0">
   <h1 class="shadow p-2">On Colaboration</h1>
 </div>
 

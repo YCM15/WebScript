@@ -2,7 +2,7 @@
 <mat-dialog-content class="mat-typography">
     <div *ngIf="data.id==null">
         <div class="mb-3" >
-            <label for="InputPass" class="form-label">Name Proyect</label>
+            <label for="InputPass" class="form-label">Name {{(data.option==1)?'Proyect':'Snippet'}}</label>
           <input type="text" [(ngModel)]="nombre" class="form-control" id="InputPass" aria-describedby="emailHelp">
         </div>
         

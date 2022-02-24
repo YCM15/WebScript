@@ -63,6 +63,8 @@ export class FilesComponent implements OnInit {
     this.snippets = [];
     this.folders = [];
     this.wService.getFolderContent(this.idUrl).subscribe((res:any)=>{
+      console.log(res);
+      
       if(res.status){
         let folder = res.folder;
         this.idUrl = res.folder._id
@@ -79,10 +81,11 @@ export class FilesComponent implements OnInit {
         folder.proyectos.forEach( (p:any) => {
           this.proyects.push(p);
         })
-
-        folder.Snippets.forEach( (s:any) => {
-          this.snippets.push(s);
-        })
+        if(!this.colaborador){
+          folder.Snippets.forEach( (s:any) => {
+            this.snippets.push(s);
+          })
+        }
 
         folder.carpetas.forEach( (f:any) => {
           this.folders.push(f);

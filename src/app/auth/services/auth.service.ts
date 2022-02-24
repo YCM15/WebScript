@@ -81,6 +81,17 @@ export class AuthService {
     );
   }
 
+  updateInfoUser(body:any){
+    const url = `${this.baseUrl}/usuario/actualizar`;
+    return this.http.post(url, body).pipe(
+      tap( (res:any)=>{
+        if(res.status){
+          this.user = res.user;
+        }
+      })
+    )
+  }
+
   logout(){
     if(localStorage.getItem('access_token')){
       localStorage.removeItem('access_token');

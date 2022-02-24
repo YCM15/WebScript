@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class SingUpComponent implements OnInit {
 
-  inputPass:string = 'password';
+  hide:boolean =true;
 
   plains:any = [
     {id:1,name:'Gratis'},
@@ -19,13 +19,20 @@ export class SingUpComponent implements OnInit {
     {id:3, name:'Pro'}
   ]
 
+  nombre = new FormControl('', [Validators.required, Validators.minLength(5),Validators.pattern(/[a-zA-Z ]*/)])
+  apellido = new FormControl('', [Validators.required, Validators.minLength(5),Validators.pattern(/[a-zA-Z ]*/)])
+  mail = new FormControl('',[Validators.required,Validators.email, Validators.pattern(/^\w+([\.-_]?\w+)*@\w+([\.-_]?\w+)*(\.\w{2,4})+$/)])
+  nickname = new FormControl('', [Validators.required, Validators.minLength(5),Validators.pattern(/[a-zA-Z ]*/)])
+  password = new FormControl('', [Validators.required, Validators.minLength(6),Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$#-_!%*?&])[A-Za-z\d$@$#-_!%*?&].{6,10}/)])
+  plan = new FormControl(1, [Validators.required,Validators.pattern(/[1-3]/)])
+
   public userSign = this.fb.group({
-    nombre:['', [Validators.required, Validators.minLength(3),Validators.pattern('[a-zA-Z ]*')]],
-    apellido:['', [Validators.required, Validators.minLength(3),Validators.pattern('[a-zA-Z ]*')]],
-    nickname:['', [Validators.required, Validators.minLength(5),Validators.pattern('[a-zA-Z1-9 ]*')]],
-    password:['', [Validators.required, Validators.minLength(6),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,10}')]],
-    plan:[1, [Validators.required,Validators.pattern('[1-9]')]],
-    mail:['',[Validators.required,Validators.email, Validators.pattern("[a-z0-9_\.-]+@[\da-z\.-]+\.([a-z\.]{2,6})$")]]
+    nombre: this.nombre,
+    apellido: this.apellido,
+    nickname: this.nickname,
+    password: this.password,
+    plan: this.plan,
+    mail: this.mail
   })
 
   constructor( private fb: FormBuilder, private auth: AuthService, private router: Router ) { }
@@ -34,7 +41,7 @@ export class SingUpComponent implements OnInit {
   }
 
   save(){
-    console.log(this.userSign);
+    console.log(this.userSign.valid);
     
     if(this.userSign.valid){
       this.auth.signup(this.userSign.value).subscribe((res:any) => {
@@ -46,6 +53,12 @@ export class SingUpComponent implements OnInit {
                   timer: 1500
               })
               this.router.navigateByUrl('/workSpace')
+          } else{
+            if(res.message){
+              this.auth.alert('error', res.message, 2500);  
+            }else{
+              this.auth.alert('error', 'Error on register', 2500);
+            }
           }
       });
     } else {
@@ -53,7 +66,4 @@ export class SingUpComponent implements OnInit {
     }
   }
 
-  showPassword(check:boolean){
-    this.inputPass = check? 'text':'password';
-  }
 }

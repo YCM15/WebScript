@@ -11,34 +11,39 @@
                     <button mat-raised-button color="warn" class="mx-5 btnEdit" (click)="editProfile()">Edit Profile</button>
                     <button mat-raised-button color="primary" class="mx-5" (click)="changePass()">Password</button>
                 </div>                
-                <div class="form-group col-lg-6 col-md-6">
-                    <label>Nombre</label>
-                    <input id="nombre" class="form-control input" formControlName="nombre" required>
+                <div class="col-lg-6 col-md-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>First Name</mat-label>
+                        <input matInput [formControl]="nombre" required>
+                        <mat-error *ngIf="nombre.invalid">Not a valid name</mat-error>
+                      </mat-form-field>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6">
-                    <label>Apellido</label>
-                    <input id="apellido" class="form-control input" formControlName="apellido" required>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput [formControl]="apellido" required>
+                        <mat-error *ngIf="apellido.invalid">Not a valid last name</mat-error>
+                      </mat-form-field>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6">
-                    <label>Usuario</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text input" id="inputGroupPrepend">
-                                <mat-icon>alternate_email</mat-icon>
-                            </span>
-                        </div>
-                        <input class="form-control input " readonly id="usuario" formControlName="nickname" placeholder="" required>
-                    </div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nickname</mat-label>
+                        <input matInput [formControl]="nickname" required>
+                        <mat-error *ngIf="nickname.invalid">Not a valid field</mat-error>
+                      </mat-form-field>
                 </div>
                 <div class="form-group col-lg-6 col-md-6">
-                    <label>Correo</label>
-                    <input class="form-control input" type="email" formControlName="mail" placeholder="email@example.com" required>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput [formControl]="mail" required>
+                        <mat-error *ngIf="mail.invalid">Not a valid email</mat-error>
+                      </mat-form-field>
                 </div>
             </form>
             <div class="d-flex justify-content-center mb-3" *ngIf="edit">
-                <button mat-raised-button color="warn" class="mx-5" (click)="edit = false">Cancelar</button>
+                <button mat-raised-button color="warn" class="mx-5" (click)="editProfile()">Cancelar</button>
                 <button mat-raised-button color="primary" class="mx-5" (click)="saveChange()">Guardar</button>
             </div>    
         </div>
