@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //baseUrl:'https://webscript-api.herokuapp.com'
-  baseUrl:"http://localhost:3000"
+  baseUrl:'https://webscript-api.herokuapp.com'
+  // baseUrl:"http://localhost:3000"
 };
 
 /*
