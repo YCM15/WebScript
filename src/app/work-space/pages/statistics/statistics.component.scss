@@ -1,0 +1,17 @@
+
+*{
+    text-align: center;
+}
+#charts{
+    margin: auto;
+    padding: 0;
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 50px;
+}

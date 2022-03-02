@@ -25,6 +25,8 @@ import 'brace/mode/css';
 import 'brace/theme/github';
 import { NewFolderComponent } from './components/new-folder/new-folder.component';
 import { ModalNewProyectComponent } from './components/modal-new-proyect/modal-new-proyect.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { ModalNewProyectComponent } from './components/modal-new-proyect/modal-n
     ChangePasswordComponent,
     NewProyectComponent,
     NewFolderComponent,
-    ModalNewProyectComponent
+    ModalNewProyectComponent,
+    StatisticsComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,8 @@ import { ModalNewProyectComponent } from './components/modal-new-proyect/modal-n
     MaterialModule,
     ReactiveFormsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ]
 })
 export class WorkSpaceModule { }

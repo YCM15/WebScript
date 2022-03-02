@@ -67,20 +67,20 @@ export class ProfileComponent implements OnInit {
   }
 
   saveChange(){
-    console.log(this.formProfile.valid)
-    // if(this.formProfile.invalid){
-    //   this.formProfile.markAllAsTouched();
-    //   return;
-    // };
-    // const body:any ={...this.formProfile.value, plan: this.plan};
-    // this.auth.updateInfoUser(body).subscribe( (res:any) =>{
-    //   if(res.status){
-    //     this.auth.alert('success', 'Information udated', 1500)
-    //     this.editProfile();
-    //   }else{
-    //     this.auth.alert('error', 'Error on update information', 1500);
-    //   }
-    // })
+    // console.log(this.formProfile.valid)
+    if(this.formProfile.invalid){
+      this.formProfile.markAllAsTouched();
+      return;
+    };
+    const body:any ={...this.formProfile.value, plan: this.plan};
+    this.auth.updateInfoUser(body).subscribe( (res:any) =>{
+      if(res.status){
+        this.auth.alert('success', 'Information udated', 1500)
+        this.editProfile();
+      }else{
+        this.auth.alert('error', 'Error on update information', 1500);
+      }
+    })
     
   }
 

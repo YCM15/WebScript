@@ -19,11 +19,11 @@ export class SingUpComponent implements OnInit {
     {id:3, name:'Pro'}
   ]
 
-  nombre = new FormControl('', [Validators.required, Validators.minLength(5),Validators.pattern(/[a-zA-Z ]*/)])
-  apellido = new FormControl('', [Validators.required, Validators.minLength(5),Validators.pattern(/[a-zA-Z ]*/)])
+  nombre = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern(/^([a-zA-Z]+)*$/)])
+  apellido = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern(/^([a-zA-Z]+)*$/)])
   mail = new FormControl('',[Validators.required,Validators.email, Validators.pattern(/^\w+([\.-_]?\w+)*@\w+([\.-_]?\w+)*(\.\w{2,4})+$/)])
-  nickname = new FormControl('', [Validators.required, Validators.minLength(5),Validators.pattern(/[a-zA-Z ]*/)])
-  password = new FormControl('', [Validators.required, Validators.minLength(6),Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$#-_!%*?&])[A-Za-z\d$@$#-_!%*?&].{6,10}/)])
+  nickname = new FormControl('', [Validators.required, Validators.minLength(5),Validators.pattern(/^([a-zA-Z]+)([a-zA-Z\d]+)*$/)])
+  password = new FormControl('', [Validators.required, Validators.minLength(6),Validators.pattern(/(?=[A-Za-z\d#-_]*[a-z])(?=[A-Za-z\d#-_]*[A-Z])(?=[A-Za-z\d#-_]*[0-9])/)])
   plan = new FormControl(1, [Validators.required,Validators.pattern(/[1-3]/)])
 
   public userSign = this.fb.group({

@@ -55,7 +55,7 @@
                                 <span mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </span>
-                                <mat-hint align="end">{{(password.valid)? 'Password secure': 'Enter 6 character between Mayus minus and $#-_@$!%*?&'}}</mat-hint>
+                                <mat-hint align="end">{{(password.valid)? 'Password secure': 'Enter 6 digits between numbers letters Mayus minus and # - _'}}</mat-hint>
                                 <mat-error *ngIf="password.invalid">Password not secure</mat-error>
                               </mat-form-field>
                         </div>

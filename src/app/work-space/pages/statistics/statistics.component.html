@@ -1,0 +1,23 @@
+<div class="container text-center">
+
+    <div id="charts" class="text-center" *ngIf="load">
+        <div class="card">
+            <canvas #mychartBar baseChart width="400px" height="400px"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="chartOptions"
+            [plugins]="chartPlugins"
+            [legend]="barChartLegend"
+            [type]="barChartType">
+            </canvas>
+        </div>
+        <div class="card">
+            <canvas #mychartPie baseChart width="400px" height="400px"
+            [data]="pieChartData"
+            [type]="pieChartType"
+            [options]="chartOptions"
+            [plugins]="chartPlugins">
+            </canvas>
+        </div>
+    </div>
+</div>

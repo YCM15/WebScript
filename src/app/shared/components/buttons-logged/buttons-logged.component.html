@@ -4,6 +4,7 @@
         <mat-menu #menu="matMenu">
             <button mat-menu-item [routerLink]="['./workSpace/profile']"><mat-icon>account_circle</mat-icon>Profile</button>
             <button mat-menu-item [routerLink]="['./workSpace/files']"><mat-icon>folder</mat-icon>Files</button>
+            <button *ngIf="admin" mat-menu-item [routerLink]="['./workSpace/statistics']"><mat-icon>insert_chart_outlined</mat-icon>Statistics</button>
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
         </mat-menu>

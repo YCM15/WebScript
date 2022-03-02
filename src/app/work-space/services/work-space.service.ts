@@ -77,4 +77,19 @@ export class WorkSpaceService {
     return this.http.post(url, body);
   }
 
+  getStatistics(){
+    const url = `${this.baseUrl}/admin/statistics`;
+    return this.http.get(url)
+  }
+
+  getStatisticsSnippets(){
+    const url = `${this.baseUrl}/admin/statistics-snippets`;
+    return this.http.get(url)
+  }
+
+  change_password(body:any){
+    const url = `${this.baseUrl}/change_password`;
+      return this.http.post(url, body);
+  }
+
 }

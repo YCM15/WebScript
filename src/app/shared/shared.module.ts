@@ -10,6 +10,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { ButtonsEditorComponent } from './components/buttons-editor/buttons-editor.component';
 import { MaterialModule } from '../material/material.module';
+import { ChartsComponent } from './components/charts/charts.component';
+import { NgChartsModule } from 'ng2-charts';
 
 import 'brace';
 
@@ -48,19 +50,22 @@ import 'brace/theme/github';
     SpinnerComponent,
     EditorComponent,
     ButtonsEditorComponent,
+    ChartsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     AceEditorModule,
-    MaterialModule
+    MaterialModule,
+    NgChartsModule
   ],
   exports : [
     HeaderComponent,
     ButtonsUnlogedComponent,
     ButtonsLoggedComponent,
     EditorComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ChartsComponent
   ]
 })
 export class SharedModule { }

@@ -11,6 +11,7 @@ import { SharedService } from '../../services/shared.service';
 export class ButtonsLoggedComponent implements OnInit {
 
   nickname : string = this.auth.user.nickname;
+  admin: boolean = this.auth.user.admin;
 
   constructor( private auth: AuthService, private router:Router, private sService: SharedService) { }
 
